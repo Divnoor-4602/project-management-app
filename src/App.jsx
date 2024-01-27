@@ -5,8 +5,10 @@ import MainContent from "./components/MainContent.jsx";
 function App() {
   return (
     <>
-      <Sidebar />
-      <MainContent />
+      <div className="flex gap-4 ">
+        <Sidebar />
+        <MainContent />
+      </div>
     </>
   );
 }

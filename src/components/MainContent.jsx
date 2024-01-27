@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function MainContent() {
-  return <>main Content</>;
+  return (
+    <>
+      <h1>main content</h1>
+    </>
+  );
 }
