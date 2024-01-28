@@ -1,9 +1,21 @@
 import React, { useState } from "react";
 import AddProjectButton from "./AddProjectButton.jsx";
 import ProjectView from "./ProjectView.jsx";
+import AddProjectModal from "./AddProjectModal.jsx";
 
 export default function Sidebar() {
   const [projectsAdded, setProjectsAdded] = useState([]);
+  const [projectDetails, setProjectDetails] = useState({
+    projectName: "",
+    projectDescription: "",
+    tasks: [],
+    dateCreated: "",
+  });
+
+  function handleProjectDetails(event, modalDetails) {
+    console.log(event);
+    console.log(modalDetails);
+  }
 
   function handleProjectsAdded() {
     setProjectsAdded((previousProjects) => [
@@ -21,7 +33,10 @@ export default function Sidebar() {
           </span>
           Divnoor's workspace
         </div>
-        <AddProjectButton onProjectAdded={handleProjectsAdded} />
+        <AddProjectButton
+          onProjectAdded={handleProjectsAdded}
+          onSubmitting={handleProjectDetails}
+        />
         <div className="mx-3 mt-8 space-y-4">
           {projectsAdded.map((project) => {
             return <ProjectView projectName={project} />;

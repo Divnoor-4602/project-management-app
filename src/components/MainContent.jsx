@@ -1,9 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function MainContent() {
-  return (
-    <>
-      <h1>main content</h1>
-    </>
-  );
+  return <div>MainContent</div>;
 }

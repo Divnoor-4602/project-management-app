@@ -5,7 +5,7 @@ import MainContent from "./components/MainContent.jsx";
 function App() {
   return (
     <>
-      <div className="flex gap-4 ">
+      <div className="flex gap-4 font-mono">
         <Sidebar />
         <MainContent />
       </div>
