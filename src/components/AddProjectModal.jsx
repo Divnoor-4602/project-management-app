@@ -48,21 +48,23 @@ const AddProjectModal = forwardRef(function AddProjectModal(
           onChange={handleModalProjectDetails}
           ref={projectDescription}
         />
-        <div className="mt-8 flex w-full justify-evenly ">
+        <div className="mt-8 flex w-full justify-evenly pb-4">
           <form method="dialog">
-            <button className=" bg-red-600/70 text-white rounded-full hover:scale-105 transition-transform p-1 shadow-md">
-              <CloseIcon />
+            <button className=" bg-red-600/70 text-white rounded-full hover:scale-105 transition-transform py-1 px-2 shadow-md">
+              <CloseIcon className="mr-2 pl-2" />
+              Cancel
             </button>
           </form>
           <form method="dialog">
             <button
-              className="bg-green-600/70 text-white rounded-full p-1 hover:scale-105 transition-transform shadow-md"
+              className="bg-green-600/70 text-white rounded-full py-1 px-2 hover:scale-105 transition-transform shadow-md"
               onClick={(event) => {
                 onSubmitting(event, modalProjectDetails);
                 onProjectAdd();
               }}
             >
-              <AddIcon />
+              <AddIcon className="mr-2 pl-2" />
+              Add new project
             </button>
           </form>
         </div>
