@@ -57,7 +57,10 @@ const AddProjectModal = forwardRef(function AddProjectModal(
           <form method="dialog">
             <button
               className="bg-green-600/70 text-white rounded-full p-1 hover:scale-105 transition-transform shadow-md"
-              onClick={(event) => onSubmitting(event, modalProjectDetails)}
+              onClick={(event) => {
+                onSubmitting(event, modalProjectDetails);
+                onProjectAdd();
+              }}
             >
               <AddIcon />
             </button>

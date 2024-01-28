@@ -13,15 +13,32 @@ export default function Sidebar() {
   });
 
   function handleProjectDetails(event, modalDetails) {
-    console.log(event);
-    console.log(modalDetails);
+    let projectName = modalDetails.projectName;
+    let projectDescription = modalDetails.projectDesc;
+    // get current date
+    let date = new Date().toDateString();
+
+    setProjectDetails((prevValue) => {
+      prevValue.dateCreated = date;
+      prevValue.projectName = projectName;
+      prevValue.projectDescription = projectDescription;
+    });
   }
 
   function handleProjectsAdded() {
     setProjectsAdded((previousProjects) => [
       ...previousProjects,
-      "New Project",
+      { ...projectDetails },
     ]);
+
+    setProjectDetails((prevValue) => {
+      return {
+        projectName: "",
+        projectDescription: "",
+        tasks: [],
+        dateCreated: "",
+      };
+    });
   }
 
   return (
@@ -38,16 +55,16 @@ export default function Sidebar() {
           onSubmitting={handleProjectDetails}
         />
         <div className="mx-3 mt-8 space-y-4">
-          {projectsAdded.map((project) => {
-            return <ProjectView projectName={project} />;
-          })}
+          {projectsAdded.map((project) => (
+            <ProjectView projectName={project.projectName} />
+          ))}
         </div>
       </aside>
     </>
   );
 }
 
-// todo: Make a dialog modal pop up when the new project button is clicked to get the details of the project through a modal form
-// todo: make the projects a js object to use to display all the information required
+// todo: render project details on the main content when clicked from the sidebar
+
 // todo: main content should have a project detail component to show all the details
 // todo: each component should have a tasks section to furtther sub divide the project management
