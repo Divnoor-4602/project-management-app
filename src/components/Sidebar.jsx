@@ -43,12 +43,12 @@ export default function Sidebar() {
 
   return (
     <>
-      <aside className="text-white bg-purple-600 pr-4 md:pr-12 h-screen shadow-xl">
-        <div className="text-md pt-4">
+      <aside className="text-white bg-purple-600  h-screen shadow-xl w-96">
+        <div className="text-md pt-4 ">
           <span className="ml-2 mr-2 bg-purple-800/50 px-2 py-1 rounded-lg shadow-lg">
             D
           </span>
-          Divnoor's workspace
+          <span>Divnoor's workspace</span>
         </div>
         <AddProjectButton
           onProjectAdded={handleProjectsAdded}
@@ -56,7 +56,10 @@ export default function Sidebar() {
         />
         <div className="mx-3 mt-8 space-y-4">
           {projectsAdded.map((project) => (
-            <ProjectView projectName={project.projectName} />
+            <ProjectView
+              key={project.projectName}
+              projectName={project.projectName}
+            />
           ))}
         </div>
       </aside>

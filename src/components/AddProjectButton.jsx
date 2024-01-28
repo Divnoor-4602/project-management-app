@@ -23,7 +23,7 @@ export default function AddProjectButton({ onProjectAdded, onSubmitting }) {
 
       <button
         onClick={handleDialogShow}
-        className="ml-3 mt-4 px-8 py-1 rounded-md shadow-lg hover:scale-105
+        className="ml-12 mt-4 px-8 py-1 rounded-md shadow-lg hover:scale-105
          transition duration-150 bg-white text-black hover:bg-gradient-to-r from-violet-600
           to-fuchsia-500  hover:text-white"
       >
