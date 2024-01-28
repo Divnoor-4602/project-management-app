@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
 import DeleteSharpIcon from "@mui/icons-material/DeleteSharp";
+import AddTaskSharpIcon from "@mui/icons-material/AddTaskSharp";
+import TaskAddModal from "./TaskAddModal.jsx";
 
 export default function ProjectDetails({ projectToShow }) {
+  const dialog = useRef();
+
+  function openTaskModal() {
+    dialog.current.showModal();
+  }
+
   return (
     <>
       <div className="flex flex-col gap-4">
@@ -26,8 +34,18 @@ export default function ProjectDetails({ projectToShow }) {
           placeholder="Add description"
           className="mt-2 p-2 w-4/5 bg-gray-300/50 rounded-md focus-visible:outline-blue-500 focus-visible:scale-105 focus-visible:shadow-lg transition"
         />
-        <div>Task bar</div>
+        {/* task bar */}
+        <div className="mt-4">
+          <button
+            onClick={openTaskModal}
+            className="hover:bg-green-500 hover:text-white shadow-md rounded-lg px-4 py-2 bg-white text-black hover:scale-105 hover:shadow-xl transition duration-300"
+          >
+            <AddTaskSharpIcon className="mr-2 " />
+            <span>Add a new task</span>
+          </button>
+        </div>
       </div>
+      <TaskAddModal ref={dialog} />
     </>
   );
 }

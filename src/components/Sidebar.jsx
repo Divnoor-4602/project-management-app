@@ -3,44 +3,13 @@ import AddProjectButton from "./AddProjectButton.jsx";
 import ProjectView from "./ProjectView.jsx";
 import AddProjectModal from "./AddProjectModal.jsx";
 
-export default function Sidebar({ onSelect }) {
-  const [projectsAdded, setProjectsAdded] = useState([]);
-  const [projectDetails, setProjectDetails] = useState({
-    projectName: "",
-    projectDescription: "",
-    tasks: [],
-    dateCreated: "",
-  });
-
-  function handleProjectDetails(event, modalDetails) {
-    let projectName = modalDetails.projectName;
-    let projectDescription = modalDetails.projectDesc;
-    // get current date
-    let date = new Date().toDateString();
-
-    setProjectDetails((prevValue) => {
-      prevValue.dateCreated = date;
-      prevValue.projectName = projectName;
-      prevValue.projectDescription = projectDescription;
-    });
-  }
-
-  function handleProjectsAdded() {
-    setProjectsAdded((previousProjects) => [
-      ...previousProjects,
-      { ...projectDetails },
-    ]);
-
-    setProjectDetails((prevValue) => {
-      return {
-        projectName: "",
-        projectDescription: "",
-        tasks: [],
-        dateCreated: "",
-      };
-    });
-  }
-
+export default function Sidebar({
+  onSelect,
+  onProjectsAdded,
+  projectsAdded,
+  projectDetails,
+  onProjectDetails,
+}) {
   return (
     <>
       <aside className="text-white bg-purple-600  h-screen shadow-xl w-96">
@@ -51,8 +20,8 @@ export default function Sidebar({ onSelect }) {
           <span>Divnoor's workspace</span>
         </div>
         <AddProjectButton
-          onProjectAdded={handleProjectsAdded}
-          onSubmitting={handleProjectDetails}
+          onProjectAdded={onProjectsAdded}
+          onSubmitting={onProjectDetails}
         />
         <div className="mx-3 mt-8 space-y-4">
           {projectsAdded.map((project) => (
