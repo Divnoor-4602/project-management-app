@@ -3,7 +3,7 @@ import AddProjectButton from "./AddProjectButton.jsx";
 import ProjectView from "./ProjectView.jsx";
 import AddProjectModal from "./AddProjectModal.jsx";
 
-export default function Sidebar() {
+export default function Sidebar({ onSelect }) {
   const [projectsAdded, setProjectsAdded] = useState([]);
   const [projectDetails, setProjectDetails] = useState({
     projectName: "",
@@ -57,8 +57,9 @@ export default function Sidebar() {
         <div className="mx-3 mt-8 space-y-4">
           {projectsAdded.map((project) => (
             <ProjectView
+              onSelect={onSelect}
               key={project.projectName}
-              projectName={project.projectName}
+              projectProperties={project}
             />
           ))}
         </div>
