@@ -74,5 +74,3 @@ const AddProjectModal = forwardRef(function AddProjectModal(
 });
 
 export default AddProjectModal;
-
-// todo: create cancel and add button and move forward

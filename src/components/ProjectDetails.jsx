@@ -4,10 +4,14 @@ import AddTaskSharpIcon from "@mui/icons-material/AddTaskSharp";
 import TaskAddModal from "./TaskAddModal.jsx";
 
 export default function ProjectDetails({ projectToShow }) {
-  const dialog = useRef();
+  const taskModal = useRef();
 
-  function openTaskModal() {
-    dialog.current.showModal();
+  function handleTaskModalShow() {
+    taskModal.current.showModal();
+  }
+
+  function addTasksToCurrentProject(taskName) {
+    projectToShow.projectToDisplay.tasks.push(taskName);
   }
 
   return (
@@ -37,15 +41,19 @@ export default function ProjectDetails({ projectToShow }) {
         {/* task bar */}
         <div className="mt-4">
           <button
-            onClick={openTaskModal}
+            onClick={handleTaskModalShow}
             className="hover:bg-green-500 hover:text-white shadow-md rounded-lg px-4 py-2 bg-white text-black hover:scale-105 hover:shadow-xl transition duration-300"
           >
             <AddTaskSharpIcon className="mr-2 " />
             <span>Add a new task</span>
           </button>
         </div>
+        <div className="text-xl mt-8 fw-bold">Related tasks</div>
+        {projectToShow.projectToDisplay.tasks.map((task) => (
+          <p>{task}</p>
+        ))}
+        <TaskAddModal ref={taskModal} onTaskAdd={addTasksToCurrentProject} />
       </div>
-      <TaskAddModal ref={dialog} />
     </>
   );
 }
